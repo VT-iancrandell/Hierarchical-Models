@@ -1,0 +1,133 @@
+\documentclass[aoas,preprint]{imsart}
+
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+
+% settings
+%\pubyear{2005}
+%\volume{0}
+%\issue{0}
+%\firstpage{1}
+%\lastpage{8}
+\arxiv{arXiv:0000.0000}
+
+\startlocaldefs
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\endlocaldefs
+
+\begin{document}
+
+\begin{frontmatter}
+\title{Assessing Fox Mortality during Fox Hunting Trials\thanksref{T1}}
+\runtitle{Fox Mortality}
+%\thankstext{T1}{Footnote to the title with the ``thankstext'' command.}
+
+\begin{aug}
+\author{\fnms{First} \snm{Author}\thanksref{m1}\ead[label=e1]{first@somewhere.com}},
+\author{\fnms{Second} \snm{Author}\thanksref{m1}\ead[label=e2]{second@somewhere.com}}
+
+
+\thankstext{t1}{Some comment}
+\runauthor{F. Author et al.}
+
+\affiliation{Virginia Polytechnic Institute and State University\thanksmark{m1}}
+
+\address{Address of the First and Second authors\\
+Usually a few lines long\\
+\printead{e1}\\
+\phantom{E-mail:\ }\printead*{e2}}
+
+\end{aug}
+
+\begin{abstract}
+The abstract should summarize the contents of the paper.
+It should be clear, descriptive, self-explanatory and not longer
+than 200 words. It should also be suitable for publication in
+abstracting services. Please avoid using math formulas as much as possible.
+
+\end{abstract}
+
+\begin{keyword}[class=MSC]
+\kwd[Primary ]{60K35}
+\kwd{60K35}
+\kwd[; secondary ]{60K35}
+\end{keyword}
+
+\begin{keyword}
+\kwd{sample}
+\kwd{\LaTeXe}
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+test...
+\section{Data}
+
+\section{Model}
+
+\begin{eqnarray}
+y_{it} &\sim& Bernoulli(p_{it}) \\
+probit(p_{it}) & = & \alpha + X_{t}\beta_{dogs} + \theta_{it} \\
+\theta_{it} &\sim& N(\alpha_{i} + G_{it} \beta_{exp}, \phi^{-1})
+\end{eqnarray}
+where $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). The number of dogs for trial t is denoted $X_t$ and $G_{it}$ is the experience of fox $i$ on day $t$. Let $R_{it}$ be the risk matrix, where
+\[
+    R_{it}=\left\{
+                \begin{array}{ll}
+                  1 \quad \text{ if fox i is alive and collared on day t-1}\\
+                  0 \quad \text{otherwise}
+                \end{array}
+              \right.
+  \]
+  We use data augmentation where 
+  \begin{eqnarray}
+  Z_{it} \sim N( \alpha + X_t\beta_{dogs} +\theta_{it}
+  \end{eqnarray}
+  and
+\[
+    Y_{it}=\left\{
+                \begin{array}{ll}
+                  1 \quad  Z_{it} > 0\\
+                  0 \quad Z_{it} \leq 0
+                \end{array}
+              \right.
+  \]
+  
+  \subsection{Outstanding Model Based Questions}
+  \begin{itemize}
+  \item Potential Interaction between experience and dogs
+  \item how to handle non-trial deaths
+  \begin{enumerate}
+  \item exclude
+  \item average dogs across week
+  \item ???
+  \end{enumerate}
+  \item assess linearity of `XB' inside link function
+  \item perhaps look at a comparison of the hazard (survival curve) for trial and non-trial days.
+  \end{itemize}
+  
+\section{Results}
+The goal is to learn $p(\beta_{dogs}|\tilde{y})$ and $p(\beta_{dogs}|\tilde{y})$ in order to assess the discrete hazard.
+\section{Discussion}
+
+\newpage
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{r1}
+\textsc{Billingsley, P.} (1999). \textit{Convergence of
+Probability Measures}, 2nd ed.
+Wiley, New York.
+\MR{1700749}
+
+
+\end{thebibliography}
+
+\end{document}
