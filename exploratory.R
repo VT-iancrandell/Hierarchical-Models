@@ -121,7 +121,9 @@ for (i in 1:num.foxes){
 }
 
 X <- cbind(rep(1,indiv.trials),keep.trials$Num_dogs,keep.trials$Experience,keep.trials$Num_dogs*keep.trials$Experience)
-phi.a <- phi.b <- .1
+# Fairly strong prior, the tendency is for the random effects to march towards \infty and -\infty for some
+# fox that die on first day or survive the entire time.
+phi.a <- phi.b <- 5
 phi <- rep(1,num.MCMC)
 # ignoring repeated trials on same fox
 for (i in 2:num.MCMC){
@@ -165,14 +167,7 @@ for (i in 1:num.foxes){
   plot(theta[,i],type='l',main=paste('Fox id = ',foxes[i]))  
 }
 
-# Try to simulate different policy regimes
-# Compute "Mean" Hazard at each dog value
-discrete_hazard <- cbind(X,round(1-pnorm(X %*% apply(beta.samples,2,mean)),5))
-discrete_hazard <- discrete_hazard[,-c(1,4)]
-colnames(discrete_hazard) <- c("Number of Dogs",'Fox Experience','Discrete Hazard')
-discrete_hazard
-
-
+save(beta.samples,theta,phi,file='~/Dropbox/FoxData/MCMCout.Rdata')
 
 
 
