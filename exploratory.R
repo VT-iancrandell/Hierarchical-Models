@@ -3,7 +3,12 @@ library(mnormt) #rmnorm
 in.dat <- read.csv('~/Dropbox/FoxData/goodfox_jmp.csv')
 #including trial information from the fox that died during a trial
 keep.trials <- in.dat[in.dat$Num_dogs >0,c(2,3,4,6)]
-# still need to account for missing data on non-trial days
+####################################################################
+####################################################################
+# TODO
+####################################################################
+# 1. account for missing data on non-trial days
+# 2. justification of priors
 ####################################################################
 # Model #1
 # Simple Probit with dogs only
@@ -167,21 +172,3 @@ for (i in 1:num.foxes){
   plot(theta[,i],type='l',main=paste('Fox id = ',foxes[i]))  
 }
 
-save(beta.samples,theta,phi,file='~/Dropbox/FoxData/MCMCout.Rdata')
-
-
-
-####################################################################
-# Policy Analysis
-####################################################################
-# Regime A.
-# no limits on dog density or fox acclimation time
-#
-# Regime B
-# No limits on dog density require at least 1 week of acclimation time before trials
-#
-# Regime C
-# Max dog density and at least 1 week of acclimation time required before trials
-
-
-## Regime a 
