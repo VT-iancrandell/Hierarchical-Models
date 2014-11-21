@@ -1,0 +1,221 @@
+\documentclass{beamer}
+
+\usepackage{pgf,pgfpages}
+\usepackage{graphicx}
+\usepackage{units}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{subfig}
+\makeatletter
+\newcommand\ChangeItemFont[3]{%
+\renewcommand{\itemize}[1][]{%
+  \beamer@ifempty{##1}{}{\def\beamer@defaultospec{#1}}%
+  \ifnum \@itemdepth >2\relax\@toodeep\else
+    \advance\@itemdepth\@ne
+    \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+    \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+    \list
+      {\usebeamertemplate{itemize \beameritemnestingprefix item}}
+      {\def\makelabel####1{%
+          {%
+            \hss\llap{{%
+                \usebeamerfont*{itemize \beameritemnestingprefix item}%
+                \usebeamercolor[fg]{itemize \beameritemnestingprefix item}####1}}%
+          }%
+        }%
+  \ifnum\@itemdepth=1\relax
+    #1%
+  \else
+  \ifnum\@itemdepth=2\relax
+    #2%
+  \else
+  \ifnum\@itemdepth=3\relax
+    #3%
+  \fi%
+  \fi%
+  \fi%
+  }
+  \fi%
+  \beamer@cramped%
+  \raggedright%
+  \beamer@firstlineitemizeunskip%
+}}
+\makeatother
+
+\mode<presentation>
+{
+  \usetheme{ift}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{items}[square]
+}
+
+\usefonttheme[onlymath]{serif}
+\setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
+
+\definecolor{uibred}{RGB}{102,0, 0}
+\definecolor{uibblue}{RGB}{102,0, 0}
+\definecolor{uibgreen}{RGB}{102,0, 0}
+%\definecolor{uibgreen}{RGB}{50, 105, 0}
+\definecolor{uiborange}{RGB}{102,0, 0}
+
+
+\beamertemplatenavigationsymbolsempty
+
+
+
+\defbeamertemplate{enumerate item}{mycircle}
+{
+  %\usebeamerfont*{item projected}%
+  %\usebeamercolor[bg]{item projected}%
+  \begin{pgfpicture}{0ex}{0ex}{1.5ex}{0ex}
+	%\pgfcircle[fill]{\pgfpoint{0pt}{.75ex}}{1.25ex}
+    \pgfbox[center,base]{\color{uibblue}\insertenumlabel.}
+  \end{pgfpicture}%
+}
+[action]
+{\setbeamerfont{item projected}{size=\scriptsize}}
+\setbeamertemplate{enumerate item}[mycircle]
+
+
+
+
+\title{Predicting Civil Unrest: \\Venturing Through Latin America}
+\author{Andy Hoegh, Scotland Leman, Marco Ferreira}
+\institute{
+Department of Statistics, Virginia Tech
+}
+\date{8.3.2014}
+
+\begin{document}
+
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+
+\setbeamertemplate{background}
+ {\includegraphics[width=\paperwidth,height=\paperheight]{frontpage}}
+\setbeamertemplate{footline}[default]
+
+\begin{frame}
+  \titlepage
+  \vspace{5cm}
+\end{frame}
+
+%
+% Set the background for the rest of the slides.
+% Insert infoline at the end
+%
+\setbeamertemplate{background}
+ {\includegraphics[width=\paperwidth,height=\paperheight]{slide_small}}
+\setbeamertemplate{footline}[ifttheme]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+\subsection{Goal}
+\begin{frame}
+
+%	\frametitle{Goal: Predict Civil Unrest}
+%	\begin{columns}
+%		\column{0.5\textwidth}
+%			\parbox[c][0.9\textheight]{0.9\textwidth}
+%				{\includegraphics<1>[width=\textwidth]{Venezuela.png}}
+%		\column{0.5\textwidth}
+%			\parbox[c][0.9\textheight]{0.9\textwidth}
+%			{\includegraphics<1>[width=\textwidth]{BrazilProtestjpg.jpg}}
+%	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Overview}
+\begin{frame}
+	\frametitle{Data Overview}
+	Data is collected from ten countries. Each instance of civil unrest contains four elements: \{location, date, event type,
+	population\}. For instance, 
+	\begin{eqnarray*}
+	\mathcal{E} &=& \{Mexico,Quintana\; Roo / 06.27.2014 / \\
+	&&Employment \;\& \;Wages - not\; violent / medical \} 
+	\end{eqnarray*}
+	\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection{Data Visualization}
+\begin{frame}
+%	\frametitle{Data Visualization: Spatial}
+%	\includegraphics[width=1\textwidth]{Spatial_Counts.png}
+	\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Research Question}
+\begin{frame}
+	\frametitle{Statistical Research Question}
+ 	{\bf Motivating Question:} How does an observed event effect expected future predictive intensities?
+ 	\\~\\
+	{\bf Challenge:} Incorporating structure to account for spatial, temporal effects as well as 
+	cross-correlation between event types and populations.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modeling}
+\subsection{Modeling Options}
+\begin{frame}
+	\frametitle{Modeling Options}
+	\begin{enumerate}
+	\item Independent state space model at each state.
+	\begin{itemize}
+	\item Pros: Easy parallel computation
+	\item Cons: Lacks any spatial structure / sharing across states
+	\end{itemize}
+	\item Hierarchical random effects model with CAR
+	\begin{itemize}
+	\item Pros: Accounts for spatial structure
+	\item Cons: Computationally demanding
+	\end{itemize}
+	\end{enumerate}
+	or \\~\\
+	use multiscale modeling.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multiscale Visualization}
+\begin{frame}
+	\frametitle{Multiscale Visualization}
+%	\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=1\textwidth]{Multiscale.pdf}
+%	\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Multiscale Factorization}
+\subsection{Multivariate Poisson}
+\begin{frame}
+	\frametitle{Multiscale Factorization}
+%	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
+%	(\boldsymbol{\mu}_{tL_j})$ then:
+	\small
+	\begin{eqnarray*}
+	\prod_{j=1}^{n_L} p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j})= \prod_{j=1}^{n_1} p(\boldsymbol{Y}_{t1_j}
+	|\boldsymbol{\mu}_{t1_j}) \prod_{i=1}^I\prod_{l=1}^{L-1} \prod_{j=1}^{n_l} 
+	p(\boldsymbol{Y}_{t{D_{l_j}i}}|Y_{tl_ji},\boldsymbol{\omega}_{tl_ji}),
+	\end{eqnarray*}
+	where $\boldsymbol{Y}_{t1_j} = \{Y_{t1_j1}, ..., Y_{t1_jI}\}$ is a vector of multivariate responses at 
+	time $t$ for the first (coarse) level. 
+%	At the coarse level $ p(\boldsymbol{Y}_{t1_j}|\boldsymbol{\mu}_{t1_j}) \overset{ind}{\sim} \text{Poisson}
+%	(\boldsymbol{\mu}_{t1_j})$ and at the finer levels of the hierarchy 
+%	$p(\boldsymbol{Y}_{t{D_{l_j}i}}|Y_{tl_ji},\boldsymbol{\omega}_{tl_ji}) \sim \text{Multinomial}(Y_{tl_ji},
+%	\boldsymbol{\omega}_{tl_ji}).$ 
+%	The vector $\boldsymbol{\omega}_{tl_ji}$ contains the multiscale coefficients for the descendants of region 
+%	($l_j$) for variable $i$ at time $t$. 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Final Thoughts}
+\begin{frame}
+	\frametitle{What's Ahead}
+	\begin{itemize}
+	\item Incorporating covariates: specifically our group has a set of algorithms that mine social media to predict
+	 future protests.
+	\item Choosing/Learning the multiscale structure.
+	\end{itemize}
+\end{frame}
+
+\end{document}
+
