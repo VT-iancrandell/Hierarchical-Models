@@ -1,8 +1,13 @@
 library(msm) # rtnorm
 library(mnormt) #rmnorm
+
+# Ignore these next two lines, they're for my working directory.
+setwd("~/Desktop/Homework & Collaboration/STAT 5364/Fox Project")
+in.dat <- read.csv('goodfox_jmp.csv')
+
 in.dat <- read.csv('~/Dropbox/FoxData/goodfox_jmp.csv')
 #including trial information from the fox that died during a trial
-keep.trials <- in.dat[in.dat$Num_dogs >0,c(2,3,4,6)]
+keep.trials <- in.dat[,c(1,2,3,4,6)]
 ####################################################################
 ####################################################################
 # TODO
@@ -180,19 +185,34 @@ keep.trials <- in.dat[in.dat$Num_dogs >0,c(2,3,4,6)]
 # Include non trial days as zero dogs
 ####################################################################
 
-
-
-
 ##IAN PUT THE NEW DATA SET HERE
+keep.trials = transform(keep.trials, Date = as.Date(Date, format = "%m/%d/%Y"))
+foxes = unique(keep.trials$Freq)
+fox.by.day = numeric(0)
+for(i in 1:27){
+  tmp = keep.trials[keep.trials$Freq == foxes[i],, drop = F]
+  dates  = seq(min(tmp$Date), max(tmp$Date), by = 1)
+  fox = rep(foxes[i], length(dates))
+  exp = 0:(length(dates) - 1) + min(tmp$Experience)
+  dog = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Num_dogs
+  dog[is.na(dog)] = 0
+  dead = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Dead
+  dead[is.na(dead)] = 0
+  tmp = data.frame(Date = dates, Freq = fox, Experience = exp, Num_dogs = dog, dead = dead)
+  fox.by.day = rbind(fox.by.day, tmp)
+}
 
 
+##I'm overwriting the name of the old data set so avoid bugs.
+keep.trials = fox.by.day
 
 
 
 # initialize Gibbs sampler
 foxes <- unique(keep.trials$Freq)
 num.foxes <- length(foxes)
-num.MCMC <- 50000
+#num.MCMC <- 50000
+num.MCMC <- 1000
 indiv.trials <- nrow(keep.trials)
 beta.samples <- matrix(0,nrow=num.MCMC,ncol=4)
 up <- rep(Inf,indiv.trials)
@@ -207,13 +227,15 @@ for (i in 1:num.foxes){
 }
 
 X <- cbind(rep(1,indiv.trials),keep.trials$Num_dogs,keep.trials$Experience,keep.trials$Num_dogs*keep.trials$Experience)
+
 # Fairly strong prior, the tendency is for the random effects to march towards \infty and -\infty for some
 # fox that die on first day or survive the entire time.
 phi.a <- phi.b <- 5
 phi <- rep(1,num.MCMC)
+Cov.beta <- solve(t(X) %*% X )
 # ignoring repeated trials on same fox
 for (i in 2:num.MCMC){
-  if (i %% 1000 == 0){
+  if (i %% 100 == 0){
     print(i)
     print(Sys.time())
   }
@@ -221,7 +243,6 @@ for (i in 2:num.MCMC){
   mu <- X %*% beta.samples[(i-1),] + Q %*% theta[(i-1),]
   Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
   # Sample beta & alpha jointly
-  Cov.beta <- solve(t(X) %*% X )
   Exp.beta <- Cov.beta %*% t(X) %*% (Z - Q %*% theta[(i-1),])
   beta.samples[i,] <- rmnorm(1,Exp.beta,Cov.beta)
   # Sample theta
@@ -253,3 +274,34 @@ for (i in 1:num.foxes){
   plot(theta[,i],type='l',main=paste('Fox id = ',foxes[i]))  
 }
 
+<<<<<<< Updated upstream
+=======
+save(beta.samples,theta,phi,file='~/Dropbox/FoxData/MCMCout.Rdata')
+
+# This code computes the MAP estimates for the parameters and includes a function to compute P(y_it = 1).
+
+beta.hat = apply(beta.samples,2,mean)
+theta.hat = apply(theta,2,mean)
+surv.prob = matrix(0, nrow = 26, ncol = 412)
+for(i in 1:26){
+  for(j in 1:412){
+    surv.prob[i,j] = pnorm(theta.hat[i] + X[j,] %*% beta.hat)
+  }
+}
+
+
+####################################################################
+# Policy Analysis
+####################################################################
+# Regime A.
+# no limits on dog density or fox acclimation time
+#
+# Regime B
+# No limits on dog density require at least 1 week of acclimation time before trials
+#
+# Regime C
+# Max dog density and at least 1 week of acclimation time required before trials
+
+
+## Regime a 
+>>>>>>> Stashed changes
