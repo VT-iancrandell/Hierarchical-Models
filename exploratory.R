@@ -191,15 +191,14 @@ foxes = unique(keep.trials$Freq)
 fox.by.day = numeric(0)
 for(i in 1:27){
   tmp = keep.trials[keep.trials$Freq == foxes[i],, drop = F]
-  dates  = seq(min(tmp$Date), max(tmp$Date), by = 1)
+  dates  = seq(min(tmp$Date) - min(tmp$Experience), max(tmp$Date), by = 1)
   fox = rep(foxes[i], length(dates))
-  exp = 0:(length(dates) - 1) + min(tmp$Experience)
+  exp = 0:(length(dates) - 1)
   dog = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Num_dogs
   dog[is.na(dog)] = 0
   dead = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Dead
   dead[is.na(dead)] = 0
-  tmp = data.frame(Date = dates, Freq = fox, Experience = exp, Num_dogs = dog, dead = dead)
-  fox.by.day = rbind(fox.by.day, tmp)
+  fox.by.day = rbind(fox.by.day, data.frame(Date = dates, Freq = fox, Experience = exp, Num_dogs = dog, dead = dead))
 }
 
 
@@ -212,9 +211,10 @@ keep.trials = fox.by.day
 foxes <- unique(keep.trials$Freq)
 num.foxes <- length(foxes)
 #num.MCMC <- 50000
-num.MCMC <- 1000
+num.MCMC <- 100
 indiv.trials <- nrow(keep.trials)
 beta.samples <- matrix(0,nrow=num.MCMC,ncol=4)
+log.lik.samples = numeric(num.MCMC)
 up <- rep(Inf,indiv.trials)
 up[keep.trials$Dead ==1] <- 0
 bottom <- rep(-Inf,indiv.trials)
@@ -254,6 +254,9 @@ for (i in 2:num.MCMC){
   phiA <- phi.a + num.foxes/2
   phiB <- phi.b + t(theta[i,]) %*% theta[i,] / 2
   phi[i] <- rgamma(1,phiA,phiB)
+  # Compute -2 * log likelihood
+  prob.death = pnorm(X %*%beta.samples[i,] + Q%*%theta[i,])
+  log.lik.samples[i] = -2 * sum(keep.trials$Dead * log(prob.death) + (1 - keep.trials$Dead) * log(1 - prob.death))
 }
 
 par(mfcol=c(1,1))
