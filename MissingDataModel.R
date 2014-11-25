@@ -37,7 +37,7 @@ keep.trials = fox.by.day
 foxes <- unique(keep.trials$Freq)
 num.foxes <- length(foxes)
 #num.MCMC <- 50000
-num.MCMC <- 1000
+num.MCMC <- 5000
 indiv.trials <- nrow(keep.trials)
 beta.samples <- matrix(0,nrow=num.MCMC,ncol=4)
 up <- rep(Inf,indiv.trials)
