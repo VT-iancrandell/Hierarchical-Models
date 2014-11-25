@@ -81,12 +81,12 @@
 
 
 
-\title{Predicting Civil Unrest: \\Venturing Through Latin America}
-\author{Andy Hoegh, Scotland Leman, Marco Ferreira}
+\title{Assessing Fox Mortality in Fox Penning Trials}
+\author{Ian Crandell \& Andy Hoegh}
 \institute{
 Department of Statistics, Virginia Tech
 }
-\date{8.3.2014}
+\date{11.4.2014}
 
 \begin{document}
 
@@ -112,9 +112,13 @@ Department of Statistics, Virginia Tech
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
-\subsection{Goal}
+\subsection{Intro}
 \begin{frame}
-
+	\frametitle{What is fox penning?}
+	Add a picture of traditional horseback hunting \\
+	ideas of fair chase\\
+	difference in hunting and penning\\
+	
 %	\frametitle{Goal: Predict Civil Unrest}
 %	\begin{columns}
 %		\column{0.5\textwidth}
@@ -126,83 +130,55 @@ Department of Statistics, Virginia Tech
 %	\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Data Overview}
+\begin{frame}
+	\frametitle{Origins of the Project}
+	Talk about LISA \\
+	CMI \\
+	VDGIF\\
+	Relevance - of project	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Policy Question}
+...
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data Overview}
 \begin{frame}
 	\frametitle{Data Overview}
-	Data is collected from ten countries. Each instance of civil unrest contains four elements: \{location, date, event type,
-	population\}. For instance, 
-	\begin{eqnarray*}
-	\mathcal{E} &=& \{Mexico,Quintana\; Roo / 06.27.2014 / \\
-	&&Employment \;\& \;Wages - not\; violent / medical \} 
-	\end{eqnarray*}
+	what data is available \\
+	segue into missing data
 	\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-\subsection{Data Visualization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
-%	\frametitle{Data Visualization: Spatial}
-%	\includegraphics[width=1\textwidth]{Spatial_Counts.png}
+	\frametitle{Missing Data}
+	quick overview of missing data \\
+	add math to show Data Augmentation to integrate out
 	\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Research Question}
-\begin{frame}
-	\frametitle{Statistical Research Question}
- 	{\bf Motivating Question:} How does an observed event effect expected future predictive intensities?
- 	\\~\\
-	{\bf Challenge:} Incorporating structure to account for spatial, temporal effects as well as 
-	cross-correlation between event types and populations.
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Modeling}
-\subsection{Modeling Options}
+\subsection{Modeling Specification}
 \begin{frame}
-	\frametitle{Modeling Options}
-	\begin{enumerate}
-	\item Independent state space model at each state.
-	\begin{itemize}
-	\item Pros: Easy parallel computation
-	\item Cons: Lacks any spatial structure / sharing across states
-	\end{itemize}
-	\item Hierarchical random effects model with CAR
-	\begin{itemize}
-	\item Pros: Accounts for spatial structure
-	\item Cons: Computationally demanding
-	\end{itemize}
-	\end{enumerate}
-	or \\~\\
-	use multiscale modeling.
+	\frametitle{Modeling Specification}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Multiscale Visualization}
 \begin{frame}
-	\frametitle{Multiscale Visualization}
-%	\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=1\textwidth]{Multiscale.pdf}
-%	\end{figure}
+	\frametitle{Modeling Specification}
+	priors here \\
+	missing data piece
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Multiscale Factorization}
-\subsection{Multivariate Poisson}
+\section{Results}
+\subsection{??}
 \begin{frame}
-	\frametitle{Multiscale Factorization}
+	\frametitle{?}
 %	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
-%	(\boldsymbol{\mu}_{tL_j})$ then:
-	\small
-	\begin{eqnarray*}
-	\prod_{j=1}^{n_L} p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j})= \prod_{j=1}^{n_1} p(\boldsymbol{Y}_{t1_j}
-	|\boldsymbol{\mu}_{t1_j}) \prod_{i=1}^I\prod_{l=1}^{L-1} \prod_{j=1}^{n_l} 
-	p(\boldsymbol{Y}_{t{D_{l_j}i}}|Y_{tl_ji},\boldsymbol{\omega}_{tl_ji}),
-	\end{eqnarray*}
-	where $\boldsymbol{Y}_{t1_j} = \{Y_{t1_j1}, ..., Y_{t1_jI}\}$ is a vector of multivariate responses at 
-	time $t$ for the first (coarse) level. 
-%	At the coarse level $ p(\boldsymbol{Y}_{t1_j}|\boldsymbol{\mu}_{t1_j}) \overset{ind}{\sim} \text{Poisson}
-%	(\boldsymbol{\mu}_{t1_j})$ and at the finer levels of the hierarchy 
-%	$p(\boldsymbol{Y}_{t{D_{l_j}i}}|Y_{tl_ji},\boldsymbol{\omega}_{tl_ji}) \sim \text{Multinomial}(Y_{tl_ji},
-%	\boldsymbol{\omega}_{tl_ji}).$ 
-%	The vector $\boldsymbol{\omega}_{tl_ji}$ contains the multiscale coefficients for the descendants of region 
-%	($l_j$) for variable $i$ at time $t$. 
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -210,11 +186,7 @@ Department of Statistics, Virginia Tech
 \subsection{Final Thoughts}
 \begin{frame}
 	\frametitle{What's Ahead}
-	\begin{itemize}
-	\item Incorporating covariates: specifically our group has a set of algorithms that mine social media to predict
-	 future protests.
-	\item Choosing/Learning the multiscale structure.
-	\end{itemize}
+
 \end{frame}
 
 \end{document}
