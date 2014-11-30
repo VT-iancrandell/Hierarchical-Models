@@ -1,6 +1,15 @@
 library(msm) # rtnorm
 library(mnormt) #rmnorm
 
+rt_Discrete_CDF <- function(mu,y){
+  lower <- rep(0,length(mu)); upper <- rep(1,length(mu))
+  lower[y == 1] <- pnorm(0,mu[y==1])
+  upper[y == 0] <- pnorm(0,mu[y==0])
+  trunc.norm <- qnorm(runif(length(mu),lower,upper),mu)
+  return(trunc.norm)
+}
+
+
 # Ignore these next two lines, they're for my working directory.
 setwd("~/Desktop/Homework & Collaboration/STAT 5364/Fox Project")
 in.dat <- read.csv('goodfox_jmp.csv')
@@ -10,30 +19,31 @@ in.dat <- read.csv('~/Dropbox/FoxData/goodfox_jmp.csv')
 keep.trials <- in.dat[,c(1,2,3,4,6)]
 ####################################################################
 ####################################################################
-# TODO
-####################################################################
-# 1. account for missing data on non-trial days
-# 2. justification of priors
-####################################################################
-####################################################################
 # Model #1
 # Simple Probit with dogs only
 ####################################################################
-
+# load(file='~/Dropbox/FoxData/keep.trials.Rdata')
+# 
+# 
 # # initialize Gibbs sampler
 # num.MCMC <- 5000
 # indiv.trials <- nrow(keep.trials)
 # alpha <- rep(0,num.MCMC)
 # beta <- rep(0,num.MCMC)
 # up <- rep(Inf,indiv.trials)
-# up[keep.trials$Dead ==1] <- 0
+# up[keep.trials$dead ==1] <- 0
 # bottom <- rep(-Inf,indiv.trials)
-# bottom[keep.trials$Dead ==0] <- 0
+# bottom[keep.trials$dead ==0] <- 0
 # X <- cbind(rep(1,indiv.trials),keep.trials$Num_dogs)
-# 
+# Survive <- (keep.trials$dead - 1)^2
 # # Only consider dog effect ignoring experience and repeated trials on same fox
 # for (i in 2:num.MCMC){
 #   # Sample Z_it
+#   if (i %% 100 == 0){
+#     print(i)
+#     print(Sys.time())
+#   }
+#   
 #   mu <- alpha[i] + beta[i] * keep.trials$Num_dogs
 #   Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
 #   # Sample beta & alpha jointly
@@ -55,33 +65,37 @@ keep.trials <- in.dat[,c(1,2,3,4,6)]
 # 
 # #Verify moments near MLE
 # summary(glm(Survive~X -1,data=keep.trials,family=binomial(link="probit")))
-# 
-# 
-# # Compute "Mean" Hazard at each dog value
-# discrete_hazard <- cbind(sort(unique(keep.trials$Num_dogs)),1-pnorm(mean(alpha) + sort(unique(keep.trials$Num_dogs)) * mean(beta)))
-# colnames(discrete_hazard) <- c("Number of Dogs",'Hazard')
-# discrete_hazard
-# 
+
+
 # ####################################################################
 # # Model 2
 # # Probit with dogs and experience
 # ####################################################################
 # 
 # # initialize Gibbs sampler
-# num.MCMC <- 5000
+# num.MCMC <- 50000
 # indiv.trials <- nrow(keep.trials)
 # beta.samples <- matrix(0,nrow=num.MCMC,ncol=4)
 # up <- rep(Inf,indiv.trials)
-# up[keep.trials$Dead ==1] <- 0
+# up[keep.trials$dead ==1] <- 0
 # bottom <- rep(-Inf,indiv.trials)
-# bottom[keep.trials$Dead ==0] <- 0
+# bottom[keep.trials$dead ==0] <- 0
 # X <- cbind(rep(1,indiv.trials),keep.trials$Num_dogs,keep.trials$Experience,keep.trials$Num_dogs*keep.trials$Experience)
+# Survive <- (keep.trials$dead - 1)^2
+# y <- Survive
+# 
 # 
 # # ignoring repeated trials on same fox
 # for (i in 2:num.MCMC){
+#     # Sample Z_it
+#   if (i %% 1000 == 0){
+#     print(i)
+#     print(Sys.time())
+#   }
 #   # Sample Z_it
 #   mu <- X %*% beta.samples[i-1,]
-#   Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
+#   #Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
+#   Z <- rt_Discrete_CDF(mu,y)
 #   # Sample beta & alpha jointly
 #   Cov.beta <- solve(t(X) %*% X )
 #   Exp.beta <- Cov.beta %*% t(X) %*% Z
@@ -89,6 +103,7 @@ keep.trials <- in.dat[,c(1,2,3,4,6)]
 # }
 # 
 # #trace plots
+# par(mfcol=c(1,1))
 # plot(beta.samples[,1],type='l',main='Intercept')
 # plot(beta.samples[,2],type='l',main='Number of Dogs')
 # plot(beta.samples[,3],type='l',main = 'Fox Acclimation Time')
@@ -102,12 +117,6 @@ keep.trials <- in.dat[,c(1,2,3,4,6)]
 # summary(glm(Survive~X -1,data=keep.trials,family=binomial(link="probit")))
 # 
 # 
-# # Try to simulate different policy regimes
-# # Compute "Mean" Hazard at each dog value
-# discrete_hazard <- cbind(X,round(1-pnorm(X %*% apply(beta.samples,2,mean)),5))
-# discrete_hazard <- discrete_hazard[,-c(1,4)]
-# colnames(discrete_hazard) <- c("Number of Dogs",'Fox Experience','Discrete Hazard')
-# discrete_hazard
 
 # ####################################################################
 # # Model 3
@@ -185,33 +194,33 @@ keep.trials <- in.dat[,c(1,2,3,4,6)]
 # Include non trial days as zero dogs
 ####################################################################
 
-##IAN PUT THE NEW DATA SET HERE
-keep.trials = transform(keep.trials, Date = as.Date(Date, format = "%m/%d/%Y"))
-foxes = unique(keep.trials$Freq)
-fox.by.day = numeric(0)
-for(i in 1:27){
-  tmp = keep.trials[keep.trials$Freq == foxes[i],, drop = F]
-  dates  = seq(min(tmp$Date) - min(tmp$Experience), max(tmp$Date), by = 1)
-  fox = rep(foxes[i], length(dates))
-  exp = 0:(length(dates) - 1)
-  dog = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Num_dogs
-  dog[is.na(dog)] = 0
-  dead = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Dead
-  dead[is.na(dead)] = 0
-  fox.by.day = rbind(fox.by.day, data.frame(Date = dates, Freq = fox, Experience = exp, Num_dogs = dog, dead = dead))
-}
-
-
-##I'm overwriting the name of the old data set so avoid bugs.
-keep.trials = fox.by.day
-
+# ##IAN PUT THE NEW DATA SET HERE
+# keep.trials = transform(keep.trials, Date = as.Date(Date, format = "%m/%d/%Y"))
+# foxes = unique(keep.trials$Freq)
+# fox.by.day = numeric(0)
+# for(i in 1:27){
+#   tmp = keep.trials[keep.trials$Freq == foxes[i],, drop = F]
+#   dates  = seq(min(tmp$Date) - min(tmp$Experience), max(tmp$Date), by = 1)
+#   fox = rep(foxes[i], length(dates))
+#   exp = 0:(length(dates) - 1)
+#   dog = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Num_dogs
+#   dog[is.na(dog)] = 0
+#   dead = merge(data.frame(Date = dates), tmp, by = "Date", all.x = T)$Dead
+#   dead[is.na(dead)] = 0
+#   fox.by.day = rbind(fox.by.day, data.frame(Date = dates, Freq = fox, Experience = exp, Num_dogs = dog, dead = dead))
+# }
+# 
+# 
+# ##I'm overwriting the name of the old data set so avoid bugs.
+# keep.trials = fox.by.day
+# 
 
 
 # initialize Gibbs sampler
 foxes <- unique(keep.trials$Freq)
 num.foxes <- length(foxes)
-#num.MCMC <- 50000
-num.MCMC <- 100
+num.MCMC <- 50000
+#num.MCMC <- 100
 indiv.trials <- nrow(keep.trials)
 beta.samples <- matrix(0,nrow=num.MCMC,ncol=4)
 log.lik.samples = numeric(num.MCMC)
@@ -241,7 +250,8 @@ for (i in 2:num.MCMC){
   }
   # Sample Z_it
   mu <- X %*% beta.samples[(i-1),] + Q %*% theta[(i-1),]
-  Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
+  #Z <- mapply(rtnorm,n=rep(1,indiv.trials),mean=mu,sd=rep(1,indiv.trials),lower=bottom,upper=up)
+  Z <- rt_Discrete_CDF(mu,y)
   # Sample beta & alpha jointly
   Exp.beta <- Cov.beta %*% t(X) %*% (Z - Q %*% theta[(i-1),])
   beta.samples[i,] <- rmnorm(1,Exp.beta,Cov.beta)
@@ -255,8 +265,8 @@ for (i in 2:num.MCMC){
   phiB <- phi.b + t(theta[i,]) %*% theta[i,] / 2
   phi[i] <- rgamma(1,phiA,phiB)
   # Compute -2 * log likelihood
-  prob.death = pnorm(X %*%beta.samples[i,] + Q%*%theta[i,])
-  log.lik.samples[i] = -2 * sum(keep.trials$Dead * log(prob.death) + (1 - keep.trials$Dead) * log(1 - prob.death))
+  #prob.death = pnorm(X %*%beta.samples[i,] + Q%*%theta[i,])
+ # log.lik.samples[i] = -2 * sum(keep.trials$Dead * log(prob.death) + (1 - keep.trials$Dead) * log(1 - prob.death))
 }
 
 par(mfcol=c(1,1))
@@ -277,8 +287,6 @@ for (i in 1:num.foxes){
   plot(theta[,i],type='l',main=paste('Fox id = ',foxes[i]))  
 }
 
-<<<<<<< Updated upstream
-=======
 save(beta.samples,theta,phi,file='~/Dropbox/FoxData/MCMCout.Rdata')
 
 # This code computes the MAP estimates for the parameters and includes a function to compute P(y_it = 1).
@@ -307,4 +315,3 @@ for(i in 1:26){
 
 
 ## Regime a 
->>>>>>> Stashed changes
