@@ -1,6 +1,8 @@
 load(file='~/Desktop/fullmodel_log.Rdata')
 load(file='~/Dropbox/FoxData/keep.trials.Rdata')
 
+load(file='~/Dropbox/Fox/Hierarchical-Models/MCMCout.Rdata')
+
 #Xstar <- Xstar[1:200000,]
 # 
 # keep.trials$DateVal <- strptime(keep.trials$Date,'%m/%d/%Y')
