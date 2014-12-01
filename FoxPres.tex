@@ -140,7 +140,7 @@ Department of Statistics, Virginia Tech
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Policy Question}
-...
+	How to minimize risk to fox. This is not a question of no fatalities, but what actions could reduce risk.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,13 +163,39 @@ Department of Statistics, Virginia Tech
 \subsection{Modeling Specification}
 \begin{frame}
 	\frametitle{Modeling Specification}
-
-\end{frame}
+\begin{eqnarray}
+y_{it} &\sim& Bernoulli(p_{it}) \\
+probit(p_{it}) & = & \alpha + X_{it}\beta+ \theta_{it} \\
+\theta_{it} &\sim& N(0, \phi^{-1})
+\end{eqnarray}
+where $X_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). Let $R_{it}$ be the risk matrix, where
+\[
+    R_{it}=\left\{
+                \begin{array}{ll}
+                  1 \quad \text{ if fox i is alive and collared on day t-1}\\
+                  0 \quad \text{otherwise}
+                \end{array}
+              \right.
+  \]
+ \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Modeling Specification}
-	priors here \\
-	missing data piece
+	 We use data augmentation where 
+	 \[
+    Y_{it}=\left\{
+                \begin{array}{ll}
+                  1 \quad  Z_{it} > 0\\
+                  0 \quad Z_{it} \leq 0
+                \end{array}
+              \right.
+  \]
+and then
+  \begin{eqnarray}
+  Z_{it} \sim N( \alpha + X_{it}\beta +\theta_{it},1).
+  \end{eqnarray}
+\\
+	discuss priors here and missing data piece
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,22 +203,75 @@ Department of Statistics, Virginia Tech
 \subsection{??}
 \begin{frame}
 	\frametitle{Posterior Summaries}
-%	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
+\begin{table}[h]
+%\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & mean & CI \\
+ \hline
+  $\alpha$ & 5.4 & (3.0,11.6) \\
+ $\beta_{dogs}$ & -.008 & (-.015, -.004) \\
+ $\beta_{exp}$ & -.65 & (-2.04,-.10) \\
+ $\beta_{dogs*exp}$ & .0014 & (.0006, .0030)\\
+ \hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{??}
 \begin{frame}
 	\frametitle{Response Surface}
-%	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+				{\includegraphics<1>[width=\textwidth]{ResponseSurface.pdf}}
+		\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+			{\includegraphics<1>[width=\textwidth]{SurvivalProb.pdf}}
+	\end{columns}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{??}
 \begin{frame}
 	\frametitle{Regime Study}
+	All regimes assume a fox was placed in the pen on the first day of the study.
+	\begin{itemize}
+	\item Regime A: No constraints on number of dogs or allotted acclimation time.
+	\item Regime B: Two weeks acclimation time with no dogs.
+	\item Regime C: No more than 400 dogs allowed in pen at a time.
+	\item Regime D: Two weeks acclimation time and 400 dog limit.
+	\end{itemize}
 %	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
+\end{frame}
 
+\subsection{??}
+\begin{frame}
+	\frametitle{Regime Survival Plots}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+				{\includegraphics<1>[width=\textwidth]{RegA.pdf}}
+						\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+			{\includegraphics<1>[width=\textwidth]{RegB.pdf}}
+	\end{columns}
+\end{frame}
+\subsection{??}
+\begin{frame}
+	\frametitle{Regime Survival Plots}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+				{\includegraphics<1>[width=\textwidth]{RegC.pdf}}
+						\column{0.5\textwidth}
+			\parbox[c][0.9\textheight]{0.9\textwidth}
+			{\includegraphics<1>[width=\textwidth]{RegD.pdf}}
+	\end{columns}
 \end{frame}
 
 
