@@ -115,10 +115,18 @@ Department of Statistics, Virginia Tech
 \subsection{Intro}
 \begin{frame}
 	\frametitle{What is fox penning?}
-	Add a picture of traditional horseback hunting \\
-	ideas of fair chase\\
-	difference in hunting and penning\\
-	
+	\begin{columns}
+		\column{0.5\textwidth}
+		\parbox[c][0.9\textheight]{0.9\textwidth}
+		{\includegraphics<1>[width=\textwidth]{foxhunting.jpg}}
+		\column{0.5\textwidth}
+		\parbox[c][0.9\textheight]{0.9\textwidth}
+		{\begin{itemize}
+				\item Fox hunting is an ancient sport where human trainers and dogs hunt wild foxes.
+				\item For fox penning, the foxes are brought into an enclosure and are then hunted for training or entertainment.
+				\item Legislation restricting the growth of the practice has recently been passed in Virginia.
+			\end{itemize}}
+	\end{columns}
 %	\frametitle{Goal: Predict Civil Unrest}
 %	\begin{columns}
 %		\column{0.5\textwidth}
@@ -140,15 +148,22 @@ Department of Statistics, Virginia Tech
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Policy Question}
-	How to minimize risk to fox. This is not a question of no fatalities, but what actions could reduce risk.
+	\begin{itemize}
+		\item The clients were concerned with cruelty to the foxes.
+		\item While we had no data concerning cruelty, we could tell when a fox died based on its transponder signal.
+		\item Thus, we were in a position to investigate what influences fox mortality.
+	\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data Overview}
 \begin{frame}
 	\frametitle{Data Overview}
-	what data is available \\
-	segue into missing data
+		\begin{itemize}
+			\item Data was provided for trial days and included, fox tag IDs, the experience of the foxes, mortality data, and the number of dogs.
+			\item For interim days, we knew when a fox died could infer their experience, but only had vague information about the number of dogs.
+			\item We handled this limitation by taking a missing data approach to the analysis.
+		\end{itemize}
 	\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -200,7 +215,7 @@ and then
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
-\subsection{??}
+\subsection{Coefficient Estimates}
 \begin{frame}
 	\frametitle{Posterior Summaries}
 \begin{table}[h]
@@ -222,7 +237,7 @@ and then
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{??}
+\subsection{Graphical Summaries}
 \begin{frame}
 	\frametitle{Response Surface}
 	\begin{columns}
@@ -236,7 +251,6 @@ and then
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{??}
 \begin{frame}
 	\frametitle{Regime Study}
 	All regimes assume a fox was placed in the pen on the first day of the study.
@@ -249,7 +263,7 @@ and then
 %	At the finest level $p(\boldsymbol{Y}_{tL_j}|\boldsymbol{\mu}_{tL_j}) \overset{ind}{\sim} \text{Poisson}
 \end{frame}
 
-\subsection{??}
+
 \begin{frame}
 	\frametitle{Regime Survival Plots}
 	\begin{columns}
@@ -261,7 +275,7 @@ and then
 			{\includegraphics<1>[width=\textwidth]{RegB.pdf}}
 	\end{columns}
 \end{frame}
-\subsection{??}
+
 \begin{frame}
 	\frametitle{Regime Survival Plots}
 	\begin{columns}
@@ -274,11 +288,18 @@ and then
 	\end{columns}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Regime Analysis}
+		\begin{itemize}
+			\item Mortality is greatest with many dogs and for inexperienced foxes, but survival greatly improves either with a capped dog count or some time for the foxes to acclimate to the pen.
+			\item Trials are run weekly, so two weeks acclimation is impractical. Thus, we can most practically smooth out fox mortality by capping the number of dogs in the pen.
+		\end{itemize}
+\end{frame}
 
 \subsection{Final Thoughts}
 \begin{frame}
 	\frametitle{What's Ahead}
-
+		While we have addressed fox mortality, it remains to make the connection between mortality and cruelty. 
 \end{frame}
 
 \end{document}
