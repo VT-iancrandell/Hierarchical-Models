@@ -86,7 +86,7 @@
 \institute{
 Department of Statistics, Virginia Tech
 }
-\date{11.4.2014}
+\date{12.4.2014}
 
 \begin{document}
 
@@ -124,7 +124,7 @@ Department of Statistics, Virginia Tech
 		{\begin{itemize}
 				\item Fox hunting is an ancient sport where human trainers and dogs hunt wild foxes.
 				\item For fox penning, the foxes are brought into an enclosure and are then hunted for training or entertainment.
-				\item Legislation restricting the growth of the practice has recently been passed in Virginia.
+				\item Fox penning does not adhere to the principle of \emph{fair chase}.
 			\end{itemize}}
 	\end{columns}
 %	\frametitle{Goal: Predict Civil Unrest}
@@ -139,38 +139,48 @@ Department of Statistics, Virginia Tech
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Origins of the Project}
-	Talk about LISA \\
-	CMI \\
-	VDGIF\\
-	Relevance - of project	
+	\frametitle{Project Relevance}
+	\center
+			{\includegraphics<1>[width=.8\textwidth]{Media.png}}		
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Policy Question}
+	\frametitle{Origins of the Project}
 	\begin{itemize}
-		\item The clients were concerned with cruelty to the foxes.
-		\item While we had no data concerning cruelty, we could tell when a fox died based on its transponder signal.
-		\item Thus, we were in a position to investigate what influences fox mortality.
+		\item In early 2013 the Virginia Department of Game and Inland Fisheries (VDGIF) was considering new regulations on fox penning. They brought this dataset to Virginia Tech's Conservation Management Institute (CMI). 
+		\item The focus was on assessing factors contributing to fox mortality in fox-penning enclosures.
 	\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data Overview}
+\subsection{Overview}
 \begin{frame}
 	\frametitle{Data Overview}
 		\begin{itemize}
-			\item Data was provided for trial days and included, fox tag IDs, the experience of the foxes, mortality data, and the number of dogs.
-			\item For interim days, we knew when a fox died could infer their experience, but only had vague information about the number of dogs.
-			\item We handled this limitation by taking a missing data approach to the analysis.
+			\item Data consists of two types of days: trial days and non-trial days from a single fox pen in Virginia. For each day the following information is available:
+			\begin{itemize}
+				\item Number of dogs (for trial days only)
+				\item Experience of each fox 
+				\item Survival of each fox
+			\end{itemize}
+			\item For non-trial days, we knew when a fox died, but only had vague information about the number of dogs. We handled this limitation by taking a missing data approach to the analysis.
 		\end{itemize}
 	\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\subsection{Missing Data}
 \begin{frame}
 	\frametitle{Missing Data}
-	quick overview of missing data \\
-	add math to show Data Augmentation to integrate out
+	Inferences are made from $P(\Theta|X,Y),$ where $
+    \mathcal{X}=\left[
+                \begin{array}{ll}
+                  X \\
+                  X^{*} 
+                \end{array}
+              \right]$ \\and $X^{*}$ denotes missing covariates. Then in a Bayesian paradigm
+              \begin{eqnarray*}
+              P(\Theta|X,Y), = \int P(\Theta|X,X^{*},Y) p(X^{*}) dX^{*}
+              \end{eqnarray*}
 	\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,10 +190,10 @@ Department of Statistics, Virginia Tech
 	\frametitle{Modeling Specification}
 \begin{eqnarray}
 y_{it} &\sim& Bernoulli(p_{it}) \\
-probit(p_{it}) & = & \alpha + X_{it}\beta+ \theta_{it} \\
+probit(p_{it}) & = & \alpha + \mathcal{X}_{it}\beta+ \theta_{it} \\
 \theta_{it} &\sim& N(0, \phi^{-1})
 \end{eqnarray}
-where $X_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). Let $R_{it}$ be the risk matrix, where
+where $\mathcal{X}_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). Let $R_{it}$ be the risk matrix, where
 \[
     R_{it}=\left\{
                 \begin{array}{ll}
@@ -207,10 +217,10 @@ where $X_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{i
   \]
 and then
   \begin{eqnarray}
-  Z_{it} \sim N( \alpha + X_{it}\beta +\theta_{it},1).
+  Z_{it} \sim N( \alpha + \mathcal{X}_{it}\beta +\theta_{it},1).
   \end{eqnarray}
 \\
-	discuss priors here and missing data piece
+where vague normal priors are placed on $\alpha, \beta$. Then $p(\phi) \sim Gamma$ and $X^{*} \sim N(0,10) \mathcal{I}(X^* > 0 \;\&\; X^* < 50)$ 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
