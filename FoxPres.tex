@@ -193,15 +193,15 @@ y_{it} &\sim& Bernoulli(p_{it}) \\
 probit(p_{it}) & = & \alpha + \mathcal{X}_{it}\beta+ \theta_{it} \\
 \theta_{it} &\sim& N(0, \phi^{-1})
 \end{eqnarray}
-where $\mathcal{X}_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). Let $R_{it}$ be the risk matrix, where
-\[
-    R_{it}=\left\{
-                \begin{array}{ll}
-                  1 \quad \text{ if fox i is alive and collared on day t-1}\\
-                  0 \quad \text{otherwise}
-                \end{array}
-              \right.
-  \]
+where $\mathcal{X}_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). %Let $R_{it}$ be the risk matrix, where
+%\[
+%    R_{it}=\left\{
+%                \begin{array}{ll}
+%                  1 \quad \text{ if fox i is alive and collared on day t-1}\\
+%                  0 \quad \text{otherwise}
+%                \end{array}
+%              \right.
+%  \]
  \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -243,7 +243,7 @@ where vague normal priors are placed on $\alpha, \beta$. Then $p(\phi) \sim Gamm
 \end{tabular}
 \end{center}
 \label{default}
-\end{table}%
+\end{table}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
