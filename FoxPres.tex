@@ -190,8 +190,8 @@ Department of Statistics, Virginia Tech
 	\frametitle{Modeling Specification}
 \begin{eqnarray}
 y_{it} &\sim& Bernoulli(p_{it}) \\
-probit(p_{it}) & = & \alpha + \mathcal{X}_{it}\beta+ \theta_{it} \\
-\theta_{it} &\sim& N(0, \phi^{-1})
+probit(p_{it}) & = & \alpha + \mathcal{X}_{it}\beta+ \theta_{i} \\
+\theta_{i} &\sim& N(0, \phi^{-1})
 \end{eqnarray}
 where $\mathcal{X}_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.experience)_{it}],$ $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (trials). %Let $R_{it}$ be the risk matrix, where
 %\[
@@ -217,7 +217,7 @@ where $\mathcal{X}_{it} = [Num.dogs_t\; log.experience_{it}\; (num.dogs*log.expe
   \]
 and then
   \begin{eqnarray}
-  Z_{it} \sim N( \alpha + \mathcal{X}_{it}\beta +\theta_{it},1).
+  Z_{it} \sim N( \alpha + \mathcal{X}_{it}\beta +\theta_{i},1).
   \end{eqnarray}
 \\
 where vague normal priors are placed on $\alpha, \beta$. Then $p(\phi) \sim Gamma$ and $X^{*} \sim N(0,10) \mathcal{I}(X^* > 0 \;\&\; X^* < 50)$ 
