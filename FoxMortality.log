@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  8 DEC 2014 08:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  8 DEC 2014 15:16
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **FoxMortality.tex
 (./FoxMortality.tex
@@ -264,7 +265,28 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip51
 )
-\c@thm=\count117
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count117
+))
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+)
+\c@thm=\count118
 
 (./FoxMortality.aux
 
@@ -273,20 +295,20 @@ LaTeX Warning: Label `m1thanks' multiply defined.
 )
 \openout1 = `FoxMortality.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 \AtBeginShipoutBox=\box31
  (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
@@ -295,77 +317,136 @@ Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 137.
+)
+Package hyperref Info: Link coloring ON on input line 23.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count118
-
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
-\scratchdimen=\dimen121
-\scratchbox=\box32
-\nofMPsegments=\count120
-\nofMParguments=\count121
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count122
-\MPscratchDim=\dimen122
-\MPnumerator=\count123
-\makeMPintoPDFobject=\count124
-\everyMPtoPDFconversion=\toks30
-)))
-Package hyperref Info: Link coloring ON on input line 22.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count125
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 22.
-LaTeX Info: Redefining \pageref on input line 22.
-LaTeX Info: Redefining \nameref on input line 22.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
 
 (./FoxMortality.out) (./FoxMortality.out)
 \@outlinefile=\write3
 \openout3 = `FoxMortality.out'.
 
+
+(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count120
+\scratchdimen=\dimen123
+\scratchbox=\box32
+\nofMPsegments=\count121
+\nofMParguments=\count122
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen124
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
+\everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 30.
+(Font)              <10.95> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
+(Font)              <6> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 30.
+(Font)              <5> on input line 31.
 \@address@1=\toks31
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 63.
-
-
-Package hyperref Warning: No destination for bookmark of \addcontentsline,
-(hyperref)                destination is added on input line 80.
+(Font)              <9> on input line 58.
 
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 111.
+<Survival_Time.pdf, id=75, 361.35pt x 361.35pt>
+File: Survival_Time.pdf Graphic file (type pdf)
+ <use Survival_Time.pdf>
+Package pdftex.def Info: Survival_Time.pdf used on input line 73.
+(pdftex.def)             Requested size: 251.9989pt x 252.00043pt.
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2] [3 <./Survival_Time.pdf>] <survivalprob.pdf, id=117, 578.16pt x 433.62pt>
+File: survivalprob.pdf Graphic file (type pdf)
+
+<use survivalprob.pdf>
+Package pdftex.def Info: survivalprob.pdf used on input line 149.
+(pdftex.def)             Requested size: 251.9989pt x 188.9937pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 160.
+
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 111.
- [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 200.
- [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 200.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 160.
 
-(./FoxMortality.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 200.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 200.
+<RegA.pdf, id=127, 578.16pt x 433.62pt>
+File: RegA.pdf Graphic file (type pdf)
+ <use RegA.pdf>
+Package pdftex.def Info: RegA.pdf used on input line 170.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<RegB.pdf, id=128, 578.16pt x 433.62pt>
+File: RegB.pdf Graphic file (type pdf)
+ <use RegB.pdf>
+Package pdftex.def Info: RegB.pdf used on input line 170.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<RegC.pdf, id=129, 578.16pt x 433.62pt>
+File: RegC.pdf Graphic file (type pdf)
+ <use RegC.pdf>
+Package pdftex.def Info: RegC.pdf used on input line 171.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+<RegD.pdf, id=130, 578.16pt x 433.62pt>
+File: RegD.pdf Graphic file (type pdf)
+ <use RegD.pdf>
+Package pdftex.def Info: RegD.pdf used on input line 171.
+(pdftex.def)             Requested size: 180.0pt x 134.99644pt.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 168--173
+ []$ 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./survivalprob.pdf>] (./FoxMortality.bbl [6 <./RegA.pdf> <./RegB.pdf> <./Re
+gC.pdf> <./RegD.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
+ (./FoxMortality.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 208.
 
 
 Package rerunfilecheck Warning: File `FoxMortality.out' has changed.
@@ -373,43 +454,47 @@ Package rerunfilecheck Warning: File `FoxMortality.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `FoxMortality.out':
-(rerunfilecheck)             Before: 0581845F2E9FBB86FE8AEA262EF6A0A1;456
-(rerunfilecheck)             After:  19FD451ECA8BEC29E629ADB459E8C95C;456.
+(rerunfilecheck)             Before: 1CB05B479E0BBF8F8D786D2A5E75DC59;491
+(rerunfilecheck)             After:  D94FA3FEEC48AC8691234B983272CB8B;491.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 200.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 208.
  ) 
 Here is how much of TeX's memory you used:
- 6704 strings out of 493117
- 93183 string characters out of 6135433
- 183816 words of memory out of 5000000
- 10100 multiletter control sequences out of 15000+600000
- 10008 words of font info for 35 fonts, out of 8000000 for 9000
+ 7060 strings out of 493117
+ 98648 string characters out of 6135433
+ 187841 words of memory out of 5000000
+ 10408 multiletter control sequences out of 15000+600000
+ 12470 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,11n,35p,823b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on FoxMortality.pdf (3 pages, 210679 bytes).
+ 34i,12n,35p,887b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{section*.5} has been referenced but does not exis
+t, replaced by a fixed one
+
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on FoxMortality.pdf (7 pages, 466423 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
