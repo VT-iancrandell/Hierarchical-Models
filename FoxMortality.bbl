@@ -1,0 +1,39 @@
+\begin{thebibliography}{8}
+\newcommand{\enquote}[1]{``#1''}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Albert and Chib(1993)}]{albert}
+Albert, J.~H. and Chib, S. (1993), \enquote{Bayesian analysis of binary and
+  polychotomous response data,} \textit{Journal of the American statistical
+  Association}, 88, 669--679.
+
+\bibitem[{Boone et~al.(2009)Boone, Ye, and Smith}]{boone2009}
+Boone, E.~L., Ye, K., and Smith, E.~P. (2009), \enquote{Using data augmentation
+  via the Gibbs Sampler to incorporate missing covariate structure in linear
+  models for ecological assessments,} \textit{Environmental and ecological
+  statistics}, 16, 75--87.
+
+\bibitem[{{Boone and Crockett Club}(2014)}]{boone}
+{Boone and Crockett Club} (2014), \enquote{Fair Chase Statement,} .
+
+\bibitem[{Cox(1972)}]{cox}
+Cox, D. (1972), \enquote{Regression models and life tables (with discussion),}
+  \textit{Journal of the Royal Statistical Society}, 34, 187--220.
+
+\bibitem[{Hunter and Barrett(2011)}]{hunter}
+Hunter, L. and Barrett, P. (2011), \textit{Carnivores of the World}, Princeton
+  University Press Princeton.
+
+\bibitem[{Little and Rubin(2002)}]{little}
+Little, R.~J. and Rubin, D.~B. (2002), \enquote{Statistical analysis with
+  missing data,} .
+
+\bibitem[{Posewitz(1994)}]{posewitz}
+Posewitz, J. (1994), \textit{Beyond fair chase: the ethic and tradition of
+  hunting}, Globe Pequot.
+
+\bibitem[{Rubin(1996)}]{rubin}
+Rubin, D.~B. (1996), \enquote{Multiple imputation after 18+ years,}
+  \textit{Journal of the American Statistical Association}, 91, 473--489.
+
+\end{thebibliography}
