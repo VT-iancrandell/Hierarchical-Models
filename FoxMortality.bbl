@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{10}
 \newcommand{\enquote}[1]{``#1''}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
@@ -24,6 +24,11 @@ Cox, D. (1972), \enquote{Regression models and life tables (with discussion),}
 Hunter, L. and Barrett, P. (2011), \textit{Carnivores of the World}, Princeton
   University Press Princeton.
 
+\bibitem[{Klein and Moeschberger(2003)}]{klein}
+Klein, J. and Moeschberger, M. (2003), \enquote{Survival analysis: statistical
+  methods for censored and truncated data,} \textit{Springer-Verlag, New York,
+  NY}.
+
 \bibitem[{Little and Rubin(2002)}]{little}
 Little, R.~J. and Rubin, D.~B. (2002), \enquote{Statistical analysis with
   missing data,} .
@@ -32,8 +37,12 @@ Little, R.~J. and Rubin, D.~B. (2002), \enquote{Statistical analysis with
 Posewitz, J. (1994), \textit{Beyond fair chase: the ethic and tradition of
   hunting}, Globe Pequot.
 
+\bibitem[{Rubin(1976)}]{rubin1976}
+Rubin, D.~B. (1976), \enquote{Inference and missing data,} \textit{Biometrika},
+  63, 581--592.
+
 \bibitem[{Rubin(1996)}]{rubin}
-Rubin, D.~B. (1996), \enquote{Multiple imputation after 18+ years,}
-  \textit{Journal of the American Statistical Association}, 91, 473--489.
+--- (1996), \enquote{Multiple imputation after 18+ years,} \textit{Journal of
+  the American Statistical Association}, 91, 473--489.
 
 \end{thebibliography}
