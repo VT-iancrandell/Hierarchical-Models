@@ -17,6 +17,17 @@ in.dat <- read.csv('goodfox_jmp.csv')
 in.dat <- read.csv('~/Dropbox/FoxData/goodfox_jmp.csv')
 #including trial information from the fox that died during a trial
 keep.trials <- in.dat[,c(1,2,3,4,6)]
+
+dead <- in.dat[in.dat$Dead == 1,]
+max.experience <- aggregate(keep.trials$Experience,list(keep.trials$Freq),max)
+alive.times <- max.experience[!max.experience[,1] %in% dead$Freq,][,2]
+boxplot(dead$Experience,outline=F,ylim=c(0,max(c(dead$Experience,alive.times))),main='Survival Time',ylab='Days')
+x.jitter <- runif(21,.85,1.15)
+points(x.jitter,dead$Experience,pch=16,cex=.8)
+x.jitter2 <- runif(6,.85,1.15)
+points(x.jitter2,alive.times,pch='X',cex=.7)
+
+
 ####################################################################
 ####################################################################
 # Model #1
