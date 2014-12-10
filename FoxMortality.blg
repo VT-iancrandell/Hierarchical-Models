@@ -6,45 +6,45 @@ Database file #1: refsFox.bib
 Warning--entry type for "boone" isn't style-file defined
 --line 12 of file refsFox.bib
 Warning--empty journal in little
-You've used 8 entries,
+You've used 10 entries,
             2777 wiz_defined-function locations,
-            678 strings with 5674 characters,
-and the built_in function-call counts, 3227 in all, are:
-= -- 296
-> -- 128
-< -- 7
-+ -- 47
-- -- 39
-* -- 279
-:= -- 588
-add.period$ -- 14
-call.type$ -- 8
-change.case$ -- 45
-chr.to.int$ -- 8
-cite$ -- 9
-duplicate$ -- 151
-empty$ -- 247
-format.name$ -- 61
-if$ -- 616
+            690 strings with 5887 characters,
+and the built_in function-call counts, 4032 in all, are:
+= -- 375
+> -- 158
+< -- 9
++ -- 58
+- -- 48
+* -- 348
+:= -- 734
+add.period$ -- 18
+call.type$ -- 10
+change.case$ -- 56
+chr.to.int$ -- 10
+cite$ -- 11
+duplicate$ -- 190
+empty$ -- 306
+format.name$ -- 76
+if$ -- 771
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 9
-newline$ -- 29
-num.names$ -- 32
-pop$ -- 52
+missing$ -- 11
+newline$ -- 35
+num.names$ -- 40
+pop$ -- 63
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 56
 quote$ -- 0
-skip$ -- 110
+skip$ -- 137
 stack$ -- 0
-substring$ -- 188
-swap$ -- 31
+substring$ -- 237
+swap$ -- 40
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 84
 warning$ -- 1
-while$ -- 32
+while$ -- 40
 width$ -- 0
-write$ -- 86
+write$ -- 107
 (There were 2 warnings)
