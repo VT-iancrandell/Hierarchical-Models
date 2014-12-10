@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  9 DEC 2014 12:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 DEC 2014 13:26
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **FoxMortality.tex
 (./FoxMortality.tex
@@ -379,7 +380,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-<Survival_Time.pdf, id=75, 361.35pt x 361.35pt>
+<Survival_Time.pdf, id=77, 361.35pt x 361.35pt>
 File: Survival_Time.pdf Graphic file (type pdf)
  <use Survival_Time.pdf>
 Package pdftex.def Info: Survival_Time.pdf used on input line 74.
@@ -388,83 +389,73 @@ Package pdftex.def Info: Survival_Time.pdf used on input line 74.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2] [3 <./Survival_Time.pdf>] <survivalprob.pdf, id=113, 578.16pt x 433.62pt>
+[2] [3 <./Survival_Time.pdf>] <survivalprob.pdf, id=112, 578.16pt x 433.62pt>
 File: survivalprob.pdf Graphic file (type pdf)
 
 <use survivalprob.pdf>
-Package pdftex.def Info: survivalprob.pdf used on input line 150.
+Package pdftex.def Info: survivalprob.pdf used on input line 147.
 (pdftex.def)             Requested size: 251.9989pt x 188.9937pt.
+ [4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 156.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 161.
-
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 161.
-
-<RegA.pdf, id=125, 578.16pt x 433.62pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 156.
+ [5 <./survivalprob.pdf>] <RegA.pdf, id=137, 578.16pt x 433.62pt>
 File: RegA.pdf Graphic file (type pdf)
  <use RegA.pdf>
-Package pdftex.def Info: RegA.pdf used on input line 171.
+Package pdftex.def Info: RegA.pdf used on input line 166.
 (pdftex.def)             Requested size: 180.0pt x 134.99644pt.
 
-<RegB.pdf, id=126, 578.16pt x 433.62pt>
+<RegB.pdf, id=138, 578.16pt x 433.62pt>
 File: RegB.pdf Graphic file (type pdf)
  <use RegB.pdf>
-Package pdftex.def Info: RegB.pdf used on input line 171.
+Package pdftex.def Info: RegB.pdf used on input line 166.
 (pdftex.def)             Requested size: 180.0pt x 134.99644pt.
 
-<RegC.pdf, id=127, 578.16pt x 433.62pt>
+<RegC.pdf, id=139, 578.16pt x 433.62pt>
 File: RegC.pdf Graphic file (type pdf)
  <use RegC.pdf>
-Package pdftex.def Info: RegC.pdf used on input line 172.
+Package pdftex.def Info: RegC.pdf used on input line 167.
 (pdftex.def)             Requested size: 180.0pt x 134.99644pt.
 
-<RegD.pdf, id=128, 578.16pt x 433.62pt>
+<RegD.pdf, id=140, 578.16pt x 433.62pt>
 File: RegD.pdf Graphic file (type pdf)
  <use RegD.pdf>
-Package pdftex.def Info: RegD.pdf used on input line 172.
+Package pdftex.def Info: RegD.pdf used on input line 167.
 (pdftex.def)             Requested size: 180.0pt x 134.99644pt.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 169--174
+Overfull \hbox (20.0pt too wide) in paragraph at lines 164--169
  []$ 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5 <./survivalprob.pdf>] [6 <./RegA.pdf> <./RegB.pdf> <./RegC.pdf> <./RegD.pdf>
-] (./FoxMortality.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
+[6 <./RegA.pdf> <./RegB.pdf> <./RegC.pdf> <./RegD.pdf>] (./FoxMortality.bbl
+[7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 207.
+ [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 207.
  (./FoxMortality.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 208.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 207.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 207.
 Package rerunfilecheck Info: File `FoxMortality.out' has not changed.
-(rerunfilecheck)             Checksum: DC53B745FD3DCCD5051090EC809BF54A;491.
+(rerunfilecheck)             Checksum: 2FAF9C8D565AE610FBDB8AEBB5288DCD;491.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 208.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 207.
  ) 
 Here is how much of TeX's memory you used:
  7059 strings out of 493117
- 98638 string characters out of 6135433
- 189841 words of memory out of 5000000
+ 98634 string characters out of 6135433
+ 189862 words of memory out of 5000000
  10408 multiletter control sequences out of 15000+600000
  12470 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,12n,35p,887b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,13n,35p,1327b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -484,10 +475,10 @@ e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on FoxMortality.pdf (7 pages, 467205 bytes).
+Output written on FoxMortality.pdf (8 pages, 469609 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
+ 259 PDF objects out of 1000 (max. 8388607)
+ 215 compressed objects within 3 object streams
  38 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 
