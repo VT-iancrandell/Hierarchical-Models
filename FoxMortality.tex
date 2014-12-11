@@ -120,10 +120,10 @@ where $i = \{1,...27\} $(fox), and $t= \{1,...,T\}$ (time). The variable $y_{it}
               \right.
   \]
   
-  For prior specification, we use conjugate priors: $p(\alpha) \sim N(\alpha;0,1), \boldsymbol{\beta} \sim N(\boldsymbol{\beta};0,\Sigma),$ where $\Sigma$ is a diagonal matrix scaled such that the diagonal elements, $\sigma_{ii},$ are twice the range of the data. An informative prior $Gamma(5,5)$ is placed on the precision for the random effects, $\phi$. This insures that the fox random effects are well behaved and do not drift off to $\infty$ as might be expected for foxes that survive all of their trials. This analysis also requires priors on the missing data, the number of dogs on non-trial days. Given we believe that the number of dogs is generally less than 50 based on expert opinion, a truncated normal prior is used. Specifically $p(X^{*}) \sim N(X^{*}; 0 ,10^2,0,50)$.
+  For prior specification, we use conjugate priors: $p(\alpha) \sim N(\alpha;0,1), \boldsymbol{\beta} \sim N(\boldsymbol{\beta};0,\Sigma),$ where $\Sigma$ is a diagonal matrix scaled such that the diagonal elements, $\sigma_{ii},$ are twice the range of the data. An informative prior $Gamma(5,5)$ is placed on the precision for the random effects, $\phi$. This insures that the fox random effects are well behaved and do not drift off to $\infty$ as might be expected for foxes that survive all of their trials. This analysis also requires priors on the missing data, the number of dogs on non-trial days. Given we believe that the number of dogs is generally less than 50 based on expert opinion, a truncated normal prior is used. Specifically $p(X^{*}) \sim N(X^{*}; 0 ,10^2,0,50)$. By considering dogs per acre, a one-to-one transformation from number of dogs, the use of a continuous truncated normal prior is defensible. 
   
 \section{Results}
-Using conjugate priors enables Gibbs sampling for each of the parameters. The sampler was run for 500,000 iterations to insure convergence for all of the parameters. Estimates of the coefficients and 95\% credible intervals are give in Table \ref{tab:PostEst}. The random effects parameter $\phi$ denotes (unsurprisingly) that different foxes have different survival probabilities.
+The use conjugate priors enables Gibbs sampling for each of the parameters, including the missing data. The sampler was run for 500,000 iterations to insure convergence for all of the parameters. The large number of iterations were necessitated for proper mixing, mostly a result of the missing data. Estimates of the coefficients and 95\% credible intervals are give in Table \ref{tab:PostEst}. The random effects parameter $\phi$ denotes (unsurprisingly) that different foxes have different survival probabilities. Furthermore, inclusion of the random effects controls for variation amongst the foxes and allows valid inferences within our model framework.
 \begin{table}[h!]
 	\begin{center}
 		\begin{tabular}{|c|c|c|}
@@ -160,7 +160,7 @@ One of the motivating goals of this paper was to find ways to make fox penning l
 		\item Regime D: Two weeks acclimation time and 400 dog limit.
 	\end{itemize}
 Given these four regimes we explored the expected survival for a typical fox if it had been placed in the enclosure on October 1, 2002, the first day of the study period. For regimes (B-D) we zero out the number of dogs for the acclimation time and restrict the number of dogs to the specified limit on days where the actual number of dogs exceeded the limit.
-These four regimes produced the following survival curves in Figure \ref{fgr:1}, where the solid line represents the mean expected survival and the dashed lines denote Bayesian credible intervals.
+These four regimes produced the curves in Figure \ref{fgr:1}, where the solid line represents the mean expected survival probability up to trial tand the dashed lines denote Bayesian credible intervals.
 \begin{figure}[h]
 	\begin{center}$
 		\begin{array}{cc}
@@ -168,10 +168,10 @@ These four regimes produced the following survival curves in Figure \ref{fgr:1},
 		\includegraphics[width=.5\textwidth]{RegC.pdf} & \includegraphics[width=.5\textwidth]{RegD.pdf}
 		\end{array}$
 	\end{center}
-	\caption{Survival functions for the four regimes}
+	\caption{Survival Probabilities for the four regimes}
 	\label{fgr:1}
 \end{figure}
-Again, the survival rates are dependent of the number of dogs in the enclosure. We use the reported values from the trials coupled with our missing value imputation subject to restrictions for a given regime. 
+These are not survival curves, per se, but rather the probability of a fox surviving until day $t$ given the trials conducted in the enclosure. Again, the survival rates are dependent of the number of dogs in the enclosure. We use the reported values from the trials coupled with our missing value imputation subject to restrictions for a given regime. 
 
 We see a precipitous drop in fox survival for regime A but not for any of the other three regimes. In fact, the other three plots look very similar. This accords with the heat map of survival probabilities, where we see a significant increase in survival probabilities as either the fox becomes more acclimated or the number of dogs is decreased. 
 
@@ -184,6 +184,8 @@ Given the limitations of this study an ideal case would provide the opportunity 
 While our analysis has been about fox survival, we do not take a stand on issues of cruelty or attempt to determine an \emph{acceptable} survival rate. Our focus is strictly on factors affecting survival and we present the inferences drawn from the data. The issues of cruelty and survival are best left in the hands of policy makers.
 
 We find that significant fox experience and the number of dogs as well as their interaction to significantly influence fox survival probabilities. In particular low levels of fox acclimation and high number of dogs are problematic. Our regime analyses reflect this fact, as fewer than half of the foxes survive beyond the first couple of days day under the current policy. Fortunately, it only takes a small change in policy to greatly improve fox survival. By either allowing the foxes acclimation time or by limiting the number of dogs in the pen we can eliminate the drastic fox mortality we see in the current regime and balance the hunters success with the foxes ability to escape.
+
+Our future work on this project is dependent upon permission to publish our findings. Given that the data belongs to the Virginia Department of Game and Inland Fisheries (VDGIF), we would not present our work without their consent. Assuming the VDGIF approves our request to publish our findings, there are a few additional considerations. First, we'd like to get a better sense of the number of dogs in the pen on non-trial days. This would likely consist of a mixture distribution of a point mass at zero and perhaps a negative binomial distribution. While this would require a Metropolis-Hastings sampler, it may be a more sound prior than our truncated normal. Finally we'd like to do model selection in a Bayesian framework, comparing models with and without the interaction term as well as the use of log transformed variables for both number of dogs and experience.
 \bibliographystyle{asa}
 \bibliography{refsFox}
 
