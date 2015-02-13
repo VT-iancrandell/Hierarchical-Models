@@ -10,9 +10,20 @@ rt_Discrete_CDF <- function(mu,y){
 }
 
 
+## simulate mixture prior figure
+c0 <- .2
+n <- 10000
+po <- .15
+r <- 3
+indicator <- rbinom(n,1,c0)
+
+
+nb.part <- rnbinom(n-sum(indicator),r,po)
+
+hist(c(nb.part,rep(0,sum(indicator))),breaks='FD',prob=T,main='',xlab='Dogs')
 # Ignore these next two lines, they're for my working directory.
-setwd("~/Desktop/Homework & Collaboration/STAT 5364/Fox Project")
-in.dat <- read.csv('goodfox_jmp.csv')
+#setwd("~/Desktop/Homework & Collaboration/STAT 5364/Fox Project")
+#in.dat <- read.csv('goodfox_jmp.csv')
 
 in.dat <- read.csv('~/Dropbox/FoxData/goodfox_jmp.csv')
 #including trial information from the fox that died during a trial
@@ -21,7 +32,7 @@ keep.trials <- in.dat[,c(1,2,3,4,6)]
 dead <- in.dat[in.dat$Dead == 1,]
 max.experience <- aggregate(keep.trials$Experience,list(keep.trials$Freq),max)
 alive.times <- max.experience[!max.experience[,1] %in% dead$Freq,][,2]
-boxplot(dead$Experience,outline=F,ylim=c(0,max(c(dead$Experience,alive.times))),main='Survival Time',ylab='Days')
+boxplot(dead$Experience,outline=F,ylim=c(0,max(c(dead$Experience,alive.times))),main='',ylab='Days')
 x.jitter <- runif(21,.85,1.15)
 points(x.jitter,dead$Experience,pch=16,cex=.8)
 x.jitter2 <- runif(6,.85,1.15)
